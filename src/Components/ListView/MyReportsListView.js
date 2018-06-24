@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import {Container, Button,Icon,Text} from 'native-base';
-import NavigationBar from "../NavigationBar/NavigationBar";
 import * as DatabaseService from "../DatabaseService/DatabaseService";
 import ListComponent from "./ListComponent";
 

@@ -10,9 +10,9 @@ export default class SubCategory extends Component {
                 onPress={() => {
                     this.props.onSubCategoryClick(this.props.subTitle)
                     Toast.show({
-                        text: this.props.subTitle,
-                        buttonText: "Okay",
-                        duration: 3000
+                        text: this.props.subTitle + "selected",
+                        buttonText: "",
+                        duration: 1000
                     });
                 }}>
                     <Image

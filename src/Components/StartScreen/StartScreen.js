@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import * as firebase from "firebase";
 
 const firebaseConfig = {
-    apiKey: "API_KEY",
+    apiKey: "AIzaSyAr_aEoCQKolbjxX6hmXyW53WnHXZdns2M",
     authDomain: "smarttropolis.firebaseapp.com",
     databaseURL: "https://smarttropolis.firebaseio.com",
     storageBucket:"smarttropolis.appspot.com",
@@ -28,8 +28,6 @@ export default class StartScreen extends Component {
         this.onEmailChange = this.onEmailChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
     }
-
-
     onEmailChange = (email) =>{
         this.setState({ email: email});
     };
@@ -46,10 +44,10 @@ export default class StartScreen extends Component {
     };
     render() {
         return <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            <Logo/>
+            <Logo/> /*Componenta ce definește log-ul aplicației și aspectul lui în ecran*/
             <View style={styles.formContainer}>
                 <LoginForm onEmailChange={this.onEmailChange.bind(this)}
-                           onPasswordChange={this.onPasswordChange.bind(this)}/>
+                           onPasswordChange={this.onPasswordChange.bind(this)}/> /*Componentă ce definește căsuțele text ale paginii*/
                 <Button rounded iconLeft block
                         style={styles.buttonContainer}
                         onPress={this.signIn.bind(this)}>
@@ -57,7 +55,7 @@ export default class StartScreen extends Component {
                     <Text style={{color:'#FFF'}}>
                         LOGIN
                     </Text>
-                </Button>
+                </Button> /*Buttonul de logare*/
             </View>
 
             <View style={styles.signUpContainer}>
@@ -65,8 +63,7 @@ export default class StartScreen extends Component {
                         onPress={() => this.props.navigation.navigate('SignUp')}>
                     <Icon name="md-person-add"/>
                     <Text style={{ color: 'white', fontWeight: '700' }}>Sign Up</Text>
-                </Button>
-
+                </Button> /*Butonul de înregistrare*/
             </View>
         </KeyboardAvoidingView>
     }

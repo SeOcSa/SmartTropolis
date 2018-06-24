@@ -9,7 +9,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
 
 
 const firebaseConfig = {
-    apiKey: "API_KEY",
+    apiKey: "AIzaSyAr_aEoCQKolbjxX6hmXyW53WnHXZdns2M",
     authDomain: "smarttropolis.firebaseapp.com",
     databaseURL: "https://smarttropolis.firebaseio.com",
     storageBucket:"smarttropolis.appspot.com",
@@ -82,6 +82,7 @@ export default class ReportDetails extends Component {
         this.state.report.createdDate = this.setCurrentDate();
 
         var result = DatabaseService.setUserReport(this.state.report, firebase.auth().currentUser.uid);
+
         if(result === true)
             navigate("Map");
     }
@@ -96,29 +97,28 @@ export default class ReportDetails extends Component {
 
     }
 
-
     onSubCategoryClick = (subCategory) => {
         this.state.report.reportSubCategory = subCategory;
     }
 
     uploadImage = async (uri, mime = 'application/octet-stream') =>{
         return new Promise((resolve, reject) => {
-            const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
+            const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri /*cale poză*/
             const sessionId = new Date().getTime()
             let uploadBlob = null
-            const imageRef = firebase.storage().ref('reportsImages').child(`${sessionId}`);
+            const imageRef = firebase.storage().ref('reportsImages').child(`${sessionId}`); /*referință firebaseStorage*/
 
             fs.readFile(uploadUri, 'base64')
                 .then((data) => {
-                    return Blob.build(data, { type: `${mime};BASE64` })
+                    return Blob.build(data, { type: `${mime};BASE64` }) /*codare base64*/
                 })
                 .then((blob) => {
                     uploadBlob = blob
-                    return imageRef.put(blob, { contentType: mime })
+                    return imageRef.put(blob, { contentType: mime }) /*încărcare imagine*/
                 })
                 .then(() => {
                     uploadBlob.close();
-                    return imageRef.getDownloadURL()
+                    return imageRef.getDownloadURL() /*returnarea url-ului de unde se poate descărca poza*/
                 })
                 .then((url) => {
                      resolve(url);
@@ -162,30 +162,33 @@ export default class ReportDetails extends Component {
                     <View style={styles.content}>
                         <ActivityIndicator size="large" color="#2f3640" />
                     </View>
-                </Modal>
+                </Modal> /*Componentă ce afișeză sub forma unei căsuțe dialog, subcategoria selectată*/
                 <StatusBar
                     barStyle="light-content"
-                />
+                /> /*Componeta ce permite afișarea bării cu ora, nivelul bateriei în partea de sus a ecranului*/
                 <View style={styles.iconContainer}>
                     <Thumbnail
                     style={styles.icon}
                     source={iconCategory}>
                     </Thumbnail>
-                </View>
+                </View> /*Tipul raportului*/
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}>{description}</Text>
                 </View>
+                /*Lista cu subcategorii a tipului raportului*/
                 <View style={styles.subCatergoryContainer}>
                     <SubCategory onSubCategoryClick={this.onSubCategoryClick.bind(this)} icon={details.subCategory1.icon} subTitle={details.subCategory1.name}/>
                     <SubCategory onSubCategoryClick={this.onSubCategoryClick.bind(this)} icon={details.subCategory2.icon} subTitle={details.subCategory2.name}/>
                     <SubCategory onSubCategoryClick={this.onSubCategoryClick.bind(this)} icon={details.subCategory3.icon} subTitle={details.subCategory3.name}/>
                 </View>
                 <View style={styles.optionsContainer}>
+                    /*Butonul care deschide camera, pentru a adăuga o poză*/
                         <Button transparent light rounded
                             style={styles.photoContainer}
                             onPress={()=>navigate('CameraView', { 'setPhotoURL': (path) => this.setPhotoURL(path)})}>
                             <Icon name="md-camera"/>
                         </Button>
+                    /*Button ce deschide un nou ecran și permite adăugarea unei descrieri raportului*/
                     <Button transparent bordered light rounded
                             onPress={() => navigate('CommentView', {'onTextCommentChange': (textComment) => this.onTextCommentChange(textComment)})}>
                         <Icon name="md-text"/>
@@ -193,12 +196,14 @@ export default class ReportDetails extends Component {
                     </Button>
 
                 </View>
+                /*Anularea adaugării detaliilor pentru raportul curent*/
                 <View style={styles.actionContainer}>
                     <Button  danger rounded
                         style={styles.cancelButton}
                         onPress={()=>navigate('Reports')}>
                         <Text >Cancel</Text>
                     </Button>
+                    /*Buton de trimitere al raportului*/
                     <Button primary rounded
                         style={styles.sendButton}
                             onPress={() => this.sendReport(description, navigate)}
@@ -210,7 +215,6 @@ export default class ReportDetails extends Component {
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {

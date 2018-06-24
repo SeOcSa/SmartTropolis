@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import NavigationBar from "../NavigationBar/NavigationBar";
-import * as DatabaseService from "../DatabaseService/DatabaseService";
 import ReportListItem from "./ReportListItem";
 
 
@@ -36,6 +35,8 @@ export default class ListComponent extends Component {
                             userName={item.userName}
                             createdDate={item.createdDate}
                             description={item.textComment}
+                            userId={item.userId}
+                            reportId={item.key}
                         />)}
                     keyExtractor={item => item.key}
                     ItemSeparatorComponent={this.renderSeparator}/>

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, KeyboardAvoidingView, Text} from 'react-native';
+import {StyleSheet, View, KeyboardAvoidingView} from 'react-native';
 import SignUpForm from './SignUpForm';
-import {Button, Fab, Icon} from 'native-base';
+import {Button, Fab, Icon,CheckBox, Text} from 'native-base';
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
-    apiKey: "API_KEY",
+    apiKey: "AIzaSyAr_aEoCQKolbjxX6hmXyW53WnHXZdns2M",
     authDomain: "smarttropolis.firebaseapp.com",
     databaseURL: "https://smarttropolis.firebaseio.com",
     storageBucket:"smarttropolis.appspot.com",
@@ -23,7 +23,8 @@ export default class SignUp extends Component {
             email: '',
             password: '',
             confirmPassword:'',
-            userName: ''
+            userName: '',
+            confirmTerms: false
         })
 
         this.onEmailChange = this.onEmailChange.bind(this);
@@ -33,12 +34,16 @@ export default class SignUp extends Component {
     }
 
     signUp= () => {
-        try {
+        try {/*Validare parolă*/
             if (this.state.password.length <= 6 ||
                 this.state.confirmPassword.length <= 6 ||
                 this.state.password != this.state.confirmPassword) {
                 alert('Password is not correct!')
                 return;
+            }
+
+            if(!this.state.confirmTerms){
+                alert("Confirm Terms & Conditions before moving on!");
             }
 
             const userName= this.state.userName;
@@ -81,6 +86,12 @@ export default class SignUp extends Component {
                                 onUserNameChange={this.onUserNameChange.bind(this)}
                                 onPasswordChange={this.onPasswordChange.bind(this)}
                                 onConfirmPasswordChange={this.onConfirmPasswordChange.bind(this)}/>
+                    <View style={{alignItems: 'center' }}>
+                        <Text style={styles.infoS}>
+                            <Icon style={{fontSize: 18, color:'#FFF'}} name="md-information-circle"/>   By creating an account, you agree to
+                            Terms & Conditions </Text>
+                    </View>
+
                     <Button rounded iconRight block
                             style={styles.buttonContainer}
                             onPress={this.signUp.bind(this)}>
@@ -121,5 +132,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         opacity: 0.9,
+    },
+    infoS:{
+        color:'#FFF',
+        margin:5,
+        textAlign: 'center'
     }
 });

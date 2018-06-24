@@ -7,8 +7,6 @@ import DatabaseService from "../DatabaseService/DatabaseService";
 import axios from 'axios';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-
-
 const {width, height} = Dimensions.get('window')
 const SCREEN_WIDTH = width
 const SCREEN_HEIGHT = height
@@ -17,7 +15,7 @@ const LATITUDE_DELTA = 0.0050
 const LONGITUDE_DELTA= LATITUDE_DELTA * ASPECT_RATIO
 
 const firebaseConfig = {
-    apiKey: "API_KEY",
+    apiKey: "AIzaSyAr_aEoCQKolbjxX6hmXyW53WnHXZdns2M",
     authDomain: "smarttropolis.firebaseapp.com",
     databaseURL: "https://smarttropolis.firebaseio.com",
     storageBucket:"smarttropolis.appspot.com",
@@ -247,7 +245,7 @@ export default class Map extends Component {
         MAILGUN:{
             baseUrl : "https://api.mailgun.net/v3",
             domain :"sandbox25db9fbcf36f44daa18ca14a698bccaf.mailgun.org",
-            apiKey: "API_key"
+            apiKey: "b54268e51b051163769006985b0ae614-47317c98-9b37e498"
         },
         from: 'Administrator SmartTropolis <administrator@smartTropolis.com>',
         to: 'sebastianoctavian.sas@yahoo.com',
@@ -258,30 +256,32 @@ export default class Map extends Component {
     };
 
     sendReportToAuthorities = (ratingValue) => {
+        //preluare valori din obiectul de configurare pentru serviciu
         var from = this.configObjForMailGun.from;
         var to = this.configObjForMailGun.to;
         var subject = this.configObjForMailGun.subject;
         var text = this.configObjForMailGun.text;
 
+        //textul mail-ului
         text = text +
             '\nReportType: ' + this.state.selectedReport.reportType +
             '\nReport sub-category: ' + this.state.selectedReport.reportSubCategory+
             `\nLocation: ` + `https://www.google.com/maps/@${this.state.selectedReport.latlng.latitude},${this.state.selectedReport.latlng.longitude}` +
             `\nReported by: ${this.state.selectedReport.userName} On:${this.state.selectedReport.createdDate}`;
 
+        //configurarea tipului conținutului mesajului
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data; charset=utf-8; boundary="another cool boundary";'
             }
         };
 
-
-
-        this.incrementRateValue();
+        this.incrementRateValue(); //incrementarea valorii de
+        // evaluare și salvarea noii valori și a noului user care a evaluat în baza de date.
 
         if (this.state.selectedReport.rating.rateValue >= ratingValue) {
             try {
-
+                //trimitere mesaj, apelare REST API de tip post, catre serviciu MailGun
                 axios({
                     method: 'post',
                     url: `${this.configObjForMailGun.MAILGUN.baseUrl}/${this.configObjForMailGun.MAILGUN.domain}/messages`,
@@ -296,7 +296,7 @@ export default class Map extends Component {
                         text,
                     }
                 }, config)
-                    .then(function (response) {
+                    .then(function (response) { //afisare raspuns în caz de succes
                         console.log('=========== RESPONSE =============', response.data);
                     })
                     .catch(function (error) {
@@ -307,6 +307,7 @@ export default class Map extends Component {
                 console.log(error);
             }
 
+            //schimbare status: Open ----> Sent
             DatabaseService.updateReportStatus(this.state.selectedReport.userId,
                 this.state.selectedReport.key,
                 "Sent");
@@ -320,19 +321,19 @@ export default class Map extends Component {
                 <View style={styles.container}>
                     <StatusBar/>
                     <MapView.Animated
-                        provider={PROVIDER_GOOGLE}
+                        provider={PROVIDER_GOOGLE} /*Folosirea expilicită a serviciului Google Maps*/
                         style={styles.map}
                         region={this.state.region}
                         onRegionChange={() => this.onRegionChange.bind(this)}
-                        customMapStyle={MapStyle}
+                        customMapStyle={MapStyle} /*Tema afișată pentru Google Maps*/
                         >
-                        <MapView.Marker.Animated
-                            coordinate = {this.state.animatedMarker}>
+                        <MapView.Marker.Animated /*Definirea pin-ul ce indică locația curentă sub forma unui cerc */
+                            coordinate = {this.state.animatedMarker}> /*parsarea coordonatelor*/
                             <View style={styles.radius}>
                                 <View style={styles.marker}></View>
                             </View>
                         </MapView.Marker.Animated>
-                        {this.state.reports.map((report) => {
+                        {this.state.reports.map((report) => { /*afisarea rapoartelor trimise sub formă de pin-uri */
                             return (
                                 <Marker
                                     onPress={(report) => this.onShowModal(report)}
@@ -354,9 +355,9 @@ export default class Map extends Component {
                 <View style={{height: 50}}>
                     <Modal visible={this.state.showModal} style={styles.modalStyle}>
                         <Card>
-                            <CardItem  header bordered>
+                            <CardItem  header bordered> /*Afișază tipul raportului și subcategoria*/
                                 <Left>
-                                    <Thumbnail circular small source={this.state.selectedReport.icon} />
+                                    <Thumbnail circular small source={this.state.selectedReport.icon} /> /*Componentă din NativeBase ce permite adăugarea unei fotografii*/
                                     <Body>
                                     <Text style={styles.titleStyle}>{this.state.selectedReport.reportType}</Text>
                                     <Text note style={styles.subtitleStyle}>{this.state.selectedReport.reportSubCategory}</Text>
@@ -369,15 +370,15 @@ export default class Map extends Component {
                                     </Body>
                                 </Right>
                             </CardItem>
-                            <CardItem bordered>
+                            <CardItem bordered> /*Afișare poza aferentă raportului*/
                                 <Image source={{uri: this.state.selectedReport.photoURL}} style={{height: 200, width: null, flex: 1}}/>
                             </CardItem>
-                            <CardItem>
+                            <CardItem> /*Afișază comentariul raportului*/
                                 <Text style={styles.titleStyle}>
                                     {this.state.selectedReport.textComment}
                                 </Text>
                             </CardItem>
-                            <CardItem footer bordered>
+                            <CardItem footer bordered> /*Informații utlizator și când a fost adăugat*/
                                 <Left>
                                     <Thumbnail source={require("../../../images/user.png")} circular small />
                                     <Body>
@@ -386,7 +387,7 @@ export default class Map extends Component {
                                     </Body>
                                 </Left>
                             </CardItem>
-                            <CardItem>
+                            <CardItem>/*Buton de evaluare a raportului*/
                                 <Left>
                                     <Button onPress={() => this.rate()} transparent >
                                         <Icon active name="md-thumbs-up" />
@@ -398,7 +399,7 @@ export default class Map extends Component {
                         <Fab style={{ backgroundColor: '#ff3b30' }} onPress={ () => this.setState({showModal: false})}
                              direction="up" position="bottomRight">
                             <Icon name="md-close"></Icon>
-                        </Fab>
+                        </Fab> /*Button de navigare înapoi*/
                     </Modal>
                     <NavigationBar navigation={this.props.navigation} mapViewActive={true} listViewActive={false}
                     myReportsListView={false} addView={false}/>

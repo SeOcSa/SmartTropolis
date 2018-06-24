@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 import {Container, Text, Header, Content, ListItem, List, Thumbnail, Body} from 'native-base';
-import NavigationBar from "../NavigationBar/NavigationBar";
 
 
 

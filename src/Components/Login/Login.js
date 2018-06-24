@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, KeyboardAvoidingView, AlertIOS,TouchableOpacity,Text} from 'react-native';
-import LoginForm from './LoginForm';
 import TouchID from 'react-native-touch-id';
 
 export default class Login extends Component {

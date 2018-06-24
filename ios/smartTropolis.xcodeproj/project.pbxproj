@@ -17,7 +17,6 @@
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
@@ -47,6 +46,7 @@
 		A095E1C121FD4DBAB3402969 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBAA8377B3B44075B3C48F3F /* SimpleLineIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B0254CC020BCBB8A00E9D5E4 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0254CBF20BCBB6300E9D5E4 /* libRNFetchBlob.a */; };
+		B0291AE620DF1C36000A985F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0291AE420DF1C36000A985F /* LaunchScreen.xib */; };
 		B9A081CCC7FF4CCF99AA00C4 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE717AF3A8B84F87AD78BCF2 /* Octicons.ttf */; };
 		D5335FB69237406A9B270DE7 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 66EF3334FB4A4E2280A4877B /* Foundation.ttf */; };
 		EB989B95AC9F44A0B3916049 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 503836BE0D334AA6AD340008 /* Zocial.ttf */; };
@@ -354,7 +354,6 @@
 		13B07F961A680F5B00A75B9A /* smartTropolis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartTropolis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = smartTropolis/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = smartTropolis/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = smartTropolis/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = smartTropolis/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = smartTropolis/main.m; sourceTree = "<group>"; };
@@ -377,6 +376,7 @@
 		9D96362D44604C51A209F003 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B0254C9520BCBB6300E9D5E4 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
+		B0291AE520DF1C36000A985F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = smartTropolis/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BBAA8377B3B44075B3C48F3F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		BD13C836A7F6488FB17EEE5F /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		FE717AF3A8B84F87AD78BCF2 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -521,12 +521,12 @@
 		13B07FAE1A68108700A75B9A /* smartTropolis */ = {
 			isa = PBXGroup;
 			children = (
+				B0291AE420DF1C36000A985F /* LaunchScreen.xib */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = smartTropolis;
@@ -1145,7 +1145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				92E0CD8D80954A60A1A5E247 /* Entypo.ttf in Resources */,
 				75D51555C4D248C2BAAEF798 /* EvilIcons.ttf in Resources */,
 				3870C78E09544D70A0221BBD /* FontAwesome.ttf in Resources */,
@@ -1155,6 +1154,7 @@
 				B9A081CCC7FF4CCF99AA00C4 /* Octicons.ttf in Resources */,
 				7526C28CAC8F4D2DAAD5CFA4 /* Roboto_medium.ttf in Resources */,
 				92C53EE8EC4C4D4FA7C59A0A /* Roboto.ttf in Resources */,
+				B0291AE620DF1C36000A985F /* LaunchScreen.xib in Resources */,
 				ED89045E456647A5822325BC /* rubicon-icon-font.ttf in Resources */,
 				A095E1C121FD4DBAB3402969 /* SimpleLineIcons.ttf in Resources */,
 				EB989B95AC9F44A0B3916049 /* Zocial.ttf in Resources */,
@@ -1296,13 +1296,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
+		B0291AE420DF1C36000A985F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13B07FB21A68108700A75B9A /* Base */,
+				B0291AE520DF1C36000A985F /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = smartTropolis;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1356,7 +1355,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 9QH35QZ523;
 				INFOPLIST_FILE = smartTropolis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1377,7 +1376,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9QH35QZ523;
 				INFOPLIST_FILE = smartTropolis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

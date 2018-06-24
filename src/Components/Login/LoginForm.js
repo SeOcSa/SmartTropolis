@@ -10,26 +10,26 @@ export default class LoginForm extends Component {
                       style={styles.item}>
                     <Icon active name='md-person' style={styles.iconS} />
                     <Input
-                        placeholder="Username"
+                        placeholder="Email" /*textul afișat înainte de introducerea caracterelor în căsuța text*/
                         placeholderTextColor="rgba(255,255,255,0.9)"
-                        returnKeyType="next"
+                        returnKeyType="next" /*textul butonului de navigare la următoarea căsuță text*/
                         onSubmitEditing={(event) => {
                             this.refs.passwordInput._root.focus();
-                        }}
-                        keyboardType="email-address"
+                        }} /*focalizarea pe următoare căsuță text în caz că există*/
+                        keyboardType="email-address" /*Setarea tipului tastaturii să fie specific pentru introducerea unui email*/
                         autoCapitalize="none"
                         autoCorrect={false}
                         style={styles.input}
                         onChangeText={(UserName) => this.props.onEmailChange(UserName)}
                     />
-                </Item>
+                </Item>/*Căsuța text pentru email*/
                 <Item rounded
                       style={styles.item}>
                     <Icon active name='md-lock'  style={styles.iconS}/>
                     <Input
                         placeholder="Password"
                         placeholderTextColor="rgba(255,255,255,0.9)"
-                        secureTextEntry
+                        secureTextEntry /*Face caracterele introduse în căsuță să fie securizate, astfel nu putem să vedem parola introdusă*/
                         returnKeyType="go"
                         style={styles.input}
                         ref='passwordInput'
@@ -39,14 +39,14 @@ export default class LoginForm extends Component {
                 <Container style={styles.forgotPass}>
                     <Button  transparent onPress={() => alert("Under construction!")}>
                         <Text style={styles.forgotPassText}>Forgot password?</Text>
-                    </Button>
+                    </Button>/*Button*/
                 </Container>
             </Container>
         );
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ /*Stiluri definite pentru aranjarea în ecran a elementelor*/
     input: {
         color: "#FFF"
     },

@@ -9,7 +9,8 @@ export default class Logo extends Component {
                 <Image
                     style={styles.logo}
                     source={require('../../../images/icon.png')}
-                />
+                />/*Componenta Image care primieste un URL către icon-ul aplicației
+                    prin intermediul proprietății "source"*/
                 <Text style={styles.title}>
                     SmartTropolis
                 </Text>
@@ -17,7 +18,7 @@ export default class Logo extends Component {
         );
     }
 }
-/*O aplicatie pentru un oras mai curat și sigur*/
+
 const styles = StyleSheet.create({
     logoContainer: {
         alignItems: 'center',
@@ -37,3 +38,8 @@ const styles = StyleSheet.create({
         opacity: 0.9
     }
 });
+
+
+
+
+/*O aplicatie pentru un oras mai curat și sigur*/

@@ -5,7 +5,7 @@ import {Container, Button,Icon,
     Content, Textarea, Form} from 'native-base';
 
 
-//TODO: fill text area with the previous comment if is add comment is press second time and so one
+//TODO: fill text area with the previous comment if is addcomment is press second time and so one
 export default class CommentComponent extends Component {
     constructor(props){
         super(props);
@@ -35,7 +35,7 @@ export default class CommentComponent extends Component {
                 </Header>
                 <Content padder style={styles.textAreaStyle}>
                     <Form>
-                        <Textarea onChangeText={(textComment) => params.onTextCommentChange(textComment)} rowSpan={6}/>
+                        <Textarea autoFocus={true} onChangeText={(textComment) => params.onTextCommentChange(textComment)} rowSpan={6}/>
                     </Form>
                 </Content>
             </Container>

@@ -3,12 +3,12 @@ import * as firebase from "firebase";
 async function getReports(rootRef, forUser) {
     var reports = [];
     if(!forUser) {
-        rootRef.once('value').then(childSnapshot => {
-            childSnapshot.forEach((doc) => {
-                doc.forEach((reportDoc) => {
-                    var obj = reportDoc.toJSON();
-                    Object.keys(obj).map((key) => {
-                        reports.push({
+        rootRef.once('value').then(childSnapshot => { /*accesare nod din baza de date, care returnează o listă cu cheile userilor*/
+            childSnapshot.forEach((doc) => { /*pentru fiecare user*/
+                doc.forEach((reportDoc) => { /*pentru fiecare raport al user-ului*/
+                    var obj = reportDoc.toJSON(); /*se transformă în format json*/
+                    Object.keys(obj).map((key) => { /*parsarea obiectului*/
+                        reports.push({ /*adăugarea în listă*/
                             key: key,
                             latlng: {
                                 latitude: parseFloat(obj[key].location.latitude),
@@ -29,11 +29,11 @@ async function getReports(rootRef, forUser) {
         });
     }
     else {
-        rootRef.once('value').then(childSnapshot => {
-            childSnapshot.forEach((doc) => {
-                doc.forEach((reportDoc) => {
-                    var obj = reportDoc.toJSON();
-                    reports.push({
+        rootRef.once('value').then(childSnapshot => { /*accesare nod din baza de date*/
+            childSnapshot.forEach((doc) => {/*pentru fiecare document din listă*/
+                doc.forEach((reportDoc) => { /*pentru fiecare raport*/
+                    var obj = reportDoc.toJSON(); /*se transformă în format json*/
+                    reports.push({ /*adăugarea în listă*/
                         key: reportDoc.key,
                         latlng: {
                             latitude: parseFloat(obj.location.latitude),
@@ -76,7 +76,7 @@ class DatabaseService {
         }
 
         return false;
-    }
+    };
 
     static updateReportRatingValue(userId, reportId, rateValue){
         let reportRatingPath= "/userReports/" + userId + "/reports/" + reportId +"/rating";
@@ -104,7 +104,6 @@ class DatabaseService {
 
         return reports;
     };
-
 
     static getUserReports = async () => {
         const rootRef =  firebase.database().ref("/userReports/"+firebase.auth().currentUser.uid);
